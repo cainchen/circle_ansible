@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  test-1:
+    docker:
+      - image: cainchen/circleci-ubuntu14.04-ansible
+    working_directory: ~/ansible_develop
+    steps:
+      - run:
+          name: Test 1 
+          command: |
+            curl --version
+  test-2:
+    docker:
+      - image: cainchen/circleci-ubuntu14.04-ansible
+    working_directory: ~/ansible_develop
+    steps:
+      - run:
+          name: Test 2
+          command: |
+            hostname
+
+workflows:
+  version: 2
+  TEST-workflows:
+    jobs:
+      - test-1
+      - test-2
