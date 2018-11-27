@@ -1,18 +1,18 @@
 version: 2
+defaultBuild: &defaultBuild
+  working_directory: ~/workspace
+  docker:
+    - image: cainchen/circleci-ubuntu14.04-ansible
 jobs:
   test-1:
-    docker:
-      - image: cainchen/circleci-ubuntu14.04-ansible
-    working_directory: ~/ansible_develop
+    <<: *defaultBuild
     steps:
       - run:
           name: Test 1 
           command: |
             curl --version
   test-2:
-    docker:
-      - image: cainchen/circleci-ubuntu14.04-ansible
-    working_directory: ~/ansible_develop
+    <<: *defaultBuild
     steps:
       - run:
           name: Test 2
